@@ -11,9 +11,8 @@ Introduccion
 -------------
 
 ### Funcionalidad
-Esta app contiene tres pantallas. las cuales puedes observar al correr el app.
+Esta app realiza consume un api de productos y muestra su resultado, guarda el criterio de busqueda en la base de datos local
 
-Toma en cuenta que son ejemplos y guias de lo que se puede comenzar a utilizar.
 
 ### Librerias
 * [Android Support Library][support-lib]
