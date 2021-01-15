@@ -32,7 +32,8 @@ import dagger.android.support.HasSupportFragmentInjector
  */
 object AppInjector {
     fun init(githubApp: GithubApp) {
-
+        DaggerAppComponent.builder().application(githubApp)
+            .build().inject(githubApp)
         githubApp
             .registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
                 override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {

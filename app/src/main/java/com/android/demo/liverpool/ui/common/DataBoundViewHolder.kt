@@ -14,17 +14,14 @@
  * limitations under the License.
  */
 
-package com.android.demo.liverpool.di
+package com.android.demo.liverpool.ui.common
 
-import com.android.demo.liverpool.ui.search.SearchFragment
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
 
-import dagger.Module
-import dagger.android.ContributesAndroidInjector
-
-@Suppress("unused")
-@Module
-abstract class FragmentBuildersModule {
-
-    @ContributesAndroidInjector
-    abstract fun contributeSearchFragment(): SearchFragment
-}
+/**
+ * A generic ViewHolder that works with a [ViewDataBinding].
+ * @param <T> The type of the ViewDataBinding.
+</T> */
+class DataBoundViewHolder<out T : ViewDataBinding> constructor(val binding: T) :
+    RecyclerView.ViewHolder(binding.root)

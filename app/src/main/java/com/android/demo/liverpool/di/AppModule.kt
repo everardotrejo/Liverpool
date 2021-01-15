@@ -16,13 +16,59 @@
 
 package com.android.demo.liverpool.di
 
+import android.app.Application
+import androidx.room.Room
+import com.android.demo.liverpool.api.LiverpoolService
+import com.android.demo.liverpool.db.LiverpoolDb
+import com.android.demo.liverpool.db.ProductDao
+import com.android.demo.liverpool.util.LiveDataCallAdapterFactory
 import dagger.Module
+import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 
 @Module(includes = [ViewModelModule::class])
 class AppModule {
 
     private lateinit var httpClient: OkHttpClient
+
+
+
+    @Singleton
+    @Provides
+    fun provideLiverpoolService(): LiverpoolService {
+        var builder: Retrofit.Builder
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        httpClient = OkHttpClient().newBuilder()
+                .addInterceptor(interceptor).build()
+
+         return  Retrofit.Builder()
+            .baseUrl("https://shoppapp.liverpool.com.mx/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(LiveDataCallAdapterFactory())
+            .build()
+            .create(LiverpoolService::class.java)
+
+    }
+
+    @Singleton
+    @Provides
+    fun provideDb(app: Application): LiverpoolDb {
+        return Room
+            .databaseBuilder(app, LiverpoolDb::class.java, "liverpool.db")
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideUserDao(db: LiverpoolDb): ProductDao {
+        return db.productDao()
+    }
 
 }

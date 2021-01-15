@@ -16,8 +16,11 @@
   -->
 <navigation xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+    app:startDestination="@id/searchFragment">
 
-
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.android.demo.liverpool.ui.search.SearchFragment"
+        android:label="SearchFragment" />
 
 </navigation>

@@ -14,17 +14,11 @@
  * limitations under the License.
  */
 
-package com.android.demo.liverpool.di
+package com.android.demo.liverpool.ui.common
 
-import com.android.demo.liverpool.ui.search.SearchFragment
-
-import dagger.Module
-import dagger.android.ContributesAndroidInjector
-
-@Suppress("unused")
-@Module
-abstract class FragmentBuildersModule {
-
-    @ContributesAndroidInjector
-    abstract fun contributeSearchFragment(): SearchFragment
+/**
+ * Generic interface for retry buttons.
+ */
+interface RetryCallback {
+    fun retry()
 }
