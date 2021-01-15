@@ -133,6 +133,7 @@ class SearchFragment : Fragment(), Injectable {
             binding.repoList.isGone  = true
             binding.delleteAll.isGone = false
             binding.backArrow.isGone = true
+            binding.input.setText("")
         }
 
         binding.sugestionList.adapter = rvSuggestAdapter

@@ -58,19 +58,6 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/search"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="38dp"
-            android:src="@mipmap/icn_search"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:visibleGone="@{true}"
-            tools:ignore="MissingConstraints" />
-
-        <ImageView
             android:id="@+id/backArrow"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -96,13 +83,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <EditText
                 android:id="@+id/input"
                 style="@style/Base.Widget.MaterialComponents.TextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/search_hint"
+
                 android:imeOptions="actionSearch"
                 android:inputType="textNoSuggestions"
                 tools:text="google" />
@@ -188,6 +175,6 @@
             android:text="@string/delete_all"
             android:textColor="@android:color/holo_red_light"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search" />
+            app:layout_constraintTop_toBottomOf="@+id/textSearch" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
